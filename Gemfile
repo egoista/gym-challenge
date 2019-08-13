@@ -2,5 +2,9 @@ source 'https://rubygems.org'
 
 ruby '2.6.3'
 
-gem 'pry'
-gem 'rspec'
+group :test, :development do
+  gem 'factory_bot'
+  gem 'faker'
+  gem 'pry'
+  gem 'rspec'
+end
