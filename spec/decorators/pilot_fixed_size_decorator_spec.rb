@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 RSpec.describe PilotFixedSizeDecorator do
   describe 'instance methods' do
-    let(:pilot) { pilot = build(:pilot, :with_laps_with_fixed_times, name: 'name') }
+    let(:pilot) { build(:pilot, :with_laps_with_fixed_times, name: 'name') }
 
     describe '#formatted_code' do
       subject { described_class.new(pilot).formatted_code(10) }
@@ -46,7 +48,6 @@ RSpec.describe PilotFixedSizeDecorator do
       end
 
       context 'when the pilot did not finished the race' do
-
         it 'returns dashes' do
           expect(pilot).to receive(:finish_time).and_return(Float::INFINITY)
 

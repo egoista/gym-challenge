@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PilotBuilder
   def self.build_from_strings(code_string, name_string, race)
     pilot = race.pilots.find { |p| p.code == code_string }

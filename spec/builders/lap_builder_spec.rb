@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe LapBuilder do
   describe '.build_from_strings' do
     let(:pilot) { build(:pilot) }

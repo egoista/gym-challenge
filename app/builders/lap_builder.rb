@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LapBuilder
   def self.build_from_strings(lap_number_string, duration_string, average_speed_string, finish_time_string, pilot)
     params = {

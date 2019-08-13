@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module BaseModel
   module AttributesType
     BASIC_TYPES = [String, Float, Integer, Time].freeze
@@ -14,9 +16,7 @@ module BaseModel
       end
 
       define_method "#{attr_name}=" do |value|
-        if value.class.to_s != type.to_s
-          self.class.argument_error(attr_name, type, value)
-        end
+        self.class.argument_error(attr_name, type, value) if value.class.to_s != type.to_s
 
         instance_variable_set("@#{attr_name}", value)
       end
@@ -28,9 +28,7 @@ module BaseModel
       end
 
       define_method "add_to_#{attr_name}" do |value|
-        if value.class.to_s != type.to_s
-          self.class.argument_error(attr_name, type, value)
-        end
+        self.class.argument_error(attr_name, type, value) if value.class.to_s != type.to_s
 
         instance_variable_set("@#{attr_name}", send(attr_name) + [value])
       end

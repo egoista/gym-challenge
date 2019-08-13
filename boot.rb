@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Load application
 
 require_relative 'app/models/base_model/attributes_type.rb'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Lap do
   describe '#initialize' do
     subject do

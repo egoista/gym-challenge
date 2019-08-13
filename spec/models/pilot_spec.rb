@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Pilot do
   describe '.initialize' do
     subject { described_class.new(code: code, name: name, race: race) }
@@ -49,7 +51,7 @@ RSpec.describe Pilot do
   describe 'instance methods' do
     let(:pilot) { build(:pilot) }
 
-    describe '#finish_time' do 
+    describe '#finish_time' do
       subject { pilot.finish_time }
 
       context 'when pilot does not have laps' do

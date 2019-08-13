@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Race do
   describe 'instance methods' do
     let(:race) { build(:race) }
@@ -92,7 +94,7 @@ RSpec.describe Race do
         context 'when pilot have laps' do
           let!(:lap) { build(:lap, pilot: pilot) }
 
-          it { is_expected.to eq({1 => pilot}) }
+          it { is_expected.to eq(1 => pilot) }
         end
       end
 
@@ -108,7 +110,7 @@ RSpec.describe Race do
           let!(:laps1) { build_list(:lap, 4, pilot: pilot1, finish_time: 1000.0) }
           let!(:laps2) { build_list(:lap, 4, pilot: pilot2, finish_time: 2000.0) }
 
-          it { is_expected.to eq({1 => pilot1, 2 => pilot2}) }
+          it { is_expected.to eq(1 => pilot1, 2 => pilot2) }
         end
       end
     end

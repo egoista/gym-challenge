@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe RaceParser do
   describe '.parse_from_log_file' do
     subject { described_class.parse_from_log_file(log_file) }
@@ -21,16 +23,11 @@ RSpec.describe RaceParser do
     subject { described_class.parse_result_to_stdout(race) }
 
     let!(:race) { build(:race) }
-    let!(:pilot) { build(:pilot, race: race, name: 'F.MASSA') }
-    let!(:laps) do
-      (1..4).each do |n|
-        build(:lap, number: n, pilot: pilot, duration: 60.0, average_speed: 60.111)
-      end
-    end
+    let!(:pilot) { build(:pilot, :with_laps_with_fixed_times, race: race, name: 'F.MASSA') }
     let(:expected_result) do
-      "\"Melhor volta #{pilot.name} 01:00.000\"\n"+
-        "\"Posição Código      Nome       Voltas  T. Prova   Melhor    V. Media   T. do 1º \"\n"+
-        "\"   1º      1   #{pilot.name}           4    04:00.000 01:00.000    #{pilot.average_speed.round(3)}   0.0       \"\n"
+      "\"Melhor volta F.MASSA 01:00.000\"\n" \
+        "\"Posição Código      Nome       Voltas  T. Prova   Melhor    V. Media   T. do 1º \"\n" \
+        "\"   1º      1   F.MASSA           4    04:00.000 01:00.000     60.0    0.0       \"\n"
     end
 
     it 'prints the result to stdout' do

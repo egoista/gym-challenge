@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe FixedSizeString do
   describe '.convert' do
     context 'when does not pass :center_allign' do

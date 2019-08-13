@@ -1,0 +1,9 @@
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120

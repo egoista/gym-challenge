@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RaceParserError < ArgumentError; end
 
 class RaceParser
@@ -17,16 +19,7 @@ class RaceParser
       log_file.each_with_index do |line, index|
         next if index.zero?
 
-        unless line.match?(REGEX)
-          raise RaceParserError, "Log file line #{index + 1} does not match Regex"
-        end
-
-        line.match(REGEX) do |m|
-          pilot = PilotBuilder.build_from_strings(m[:code], m[:name], race)
-          LapBuilder.build_from_strings(
-            m[:lap_number], m[:duration], m[:average_speed], m[:finish_time], pilot
-          )
-        end
+        read_line(line, index, race)
       end
 
       race
@@ -39,6 +32,17 @@ class RaceParser
     end
 
     private
+
+    def read_line(line, index, race)
+      raise RaceParserError, "Log file line #{index + 1} does not match Regex" unless line.match?(REGEX)
+
+      line.match(REGEX) do |m|
+        pilot = PilotBuilder.build_from_strings(m[:code], m[:name], race)
+        LapBuilder.build_from_strings(
+          m[:lap_number], m[:duration], m[:average_speed], m[:finish_time], pilot
+        )
+      end
+    end
 
     def print_best_lap(race)
       best_lap = race.best_lap

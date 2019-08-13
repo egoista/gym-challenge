@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe TimeConverter do
   describe '.minute_string_to_seconds' do
     it 'returns in seconds float' do

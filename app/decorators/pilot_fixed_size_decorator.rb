@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PilotFixedSizeDecorator < SimpleDelegator
   def formatted_code(size)
     FixedSizeString.convert(code, size, center_allign: true)

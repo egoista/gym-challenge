@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe AnalyzeRaceLogCommand do
   describe '.run' do
     subject { described_class.run(args) }
